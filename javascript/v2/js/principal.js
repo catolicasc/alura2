@@ -13,7 +13,6 @@ for (var i = 0; i < paciente.length; i++) {
   var tdAltura = pacientes.querySelector('.info-altura')
   tdAltura = tdAltura.textContent
   var imc = tdPeso / (tdAltura * tdAltura)
-  imc = imc.toFixed(2)
 
   var pesoValido = true
   var alturaValida = true
@@ -21,10 +20,14 @@ for (var i = 0; i < paciente.length; i++) {
   if (tdPeso <= 0 || tdPeso >= 1000) {
     console.log('peso invalido');
     pesoValido = false
+    tdIMC.textContent = 'deu ruim'
+    
   }
   if (tdAltura < 0 || tdAltura > 3.1) {
     console.log('altura invalida!');
     alturaValida = false
+    tdIMC.textContent = 'deu ruim'
+
   }
   if (alturaValida && pesoValido) {
     var tdIMC = pacientes.querySelector('.info-imc')
