@@ -1,0 +1,12 @@
+version: "3.0"
+service:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=crm
+      - MYSQL_USER=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - "./volume_mysql:/var/lib/mysql"
+  web:
+    image:
