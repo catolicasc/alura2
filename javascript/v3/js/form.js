@@ -6,6 +6,13 @@ botaoAdicionar.addEventListener("click", function(event){
   // pegar o valor do que foi digitado antes do click
   var paciente = obterInformacoesForm(form);
   var pacienteTr = motarTr(paciente)
+  var error = document.querySelector('#mensagem-erro')
+  error.textContent = validarPaciente(paciente);
+  if (validarPaciente(paciente).length > 0) {
+    error.textContent = validarPaciente(paciente)
+    console.log('paciente invalido');
+    return;
+  }
   var tabela = document.querySelector('#tabela-pacientes')
   tabela.appendChild(pacienteTr)
   form.reset()
@@ -23,7 +30,17 @@ function motarTr(paciente){
   pacienteTr.appendChild(montarTd(paciente.imc, 'info-imc'))
   return pacienteTr
 }
+function validarPaciente(paciente){
+  var errors = []
 
+  if (!validarPeso(paciente.peso)) {
+    errors.push("Peso é invalido")
+  }
+  if (!validarAltura(paciente.altura)) {
+    errors.push(" Altura é invalida")
+  }
+  return errors
+}
 function montarTd(dado, classe){
   var td = document.createElement('td')
   td.textContent = dado
