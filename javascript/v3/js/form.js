@@ -5,7 +5,6 @@ botaoAdicionar.addEventListener("click", function(event){
   var form = document.querySelector('#form-adiciona');
   // pegar o valor do que foi digitado antes do click
   var paciente = obterInformacoesForm(form);
-  var pacienteTr = motarTr(paciente)
     // error.textContent =
   var error = validarPaciente(paciente);
 
@@ -13,11 +12,18 @@ botaoAdicionar.addEventListener("click", function(event){
     exibirError(error)
     return;
   }
-  var tabela = document.querySelector('#tabela-pacientes')
-  tabela.appendChild(pacienteTr)
+  adicionarPacienteTabela(paciente)
   form.reset()
 });
 
+function adicionarPacienteTabela(paciente){
+  var pacienteTr = motarTr(paciente)
+  var tabela = document.querySelector('#tabela-pacientes')
+  tabela.appendChild(pacienteTr)
+
+
+
+}
 function exibirError(err){
   var ul  = document.querySelector('#mensagem-erro')
   ul.innerHTML = ""
