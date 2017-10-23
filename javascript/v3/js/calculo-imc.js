@@ -2,7 +2,6 @@ var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aparecida Nutricionista";
 
 var paciente = document.querySelectorAll  (".paciente");
-console.log(paciente.length);
 for (var i = 0; i < paciente.length; i++) {
   var pacientes  = paciente[i]
 
@@ -48,7 +47,7 @@ function validarPeso(peso){
   return false
 }
 function validarAltura(altura){
-  if (altura >0 && altura < 3.00) {
+  if (altura >= 0 && altura < 3.00) {
     return true
   }
   return false
